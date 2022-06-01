@@ -37,17 +37,19 @@ class Endpoint {
    * @return {Promise<Response>}
    */
   async get (query, { headers, update = false } = {}) {
-    let url = null
+    let url = this.endpointUrl
 
     if (!update) {
-      url = new URL(this.endpointUrl)
-      url.searchParams.append('query', query)
+      url.append(`?query=${encodeURIComponent(query)}`)
+      //url = new URL(this.endpointUrl)
+      //url.searchParams.append('query', query)
     } else {
-      url = new URL(this.updateUrl)
-      url.searchParams.append('update', query)
+      url.append(`?update=${encodeURIComponent(query)}`)
+      //url = new URL(this.updateUrl)
+      //url.searchParams.append('update', query)
     }
 
-    return this.fetch(url.toString().replace(/\+/g, '%20'), {
+    return this.fetch(url.replace(/\+/g, '%20'), {
       method: 'GET',
       headers: this.mergeHeaders(headers)
     })
