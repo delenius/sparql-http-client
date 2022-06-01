@@ -40,11 +40,11 @@ class Endpoint {
     let url = this.endpointUrl
 
     if (!update) {
-      url.append(`?query=${encodeURIComponent(query)}`)
+      url += `?query=${encodeURIComponent(query)}`
       //url = new URL(this.endpointUrl)
       //url.searchParams.append('query', query)
     } else {
-      url.append(`?update=${encodeURIComponent(query)}`)
+      url += `?update=${encodeURIComponent(query)}`
       //url = new URL(this.updateUrl)
       //url.searchParams.append('update', query)
     }
