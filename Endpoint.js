@@ -67,9 +67,11 @@ class Endpoint {
     let url = null
 
     if (!update) {
-      url = new URL(this.endpointUrl)
+      //url = new URL(this.endpointUrl)
+      url = this.endpointUrl
     } else {
-      url = new URL(this.updateUrl)
+      //url = new URL(this.updateUrl)
+      url = this.updateUrl
     }
 
     headers = this.mergeHeaders(headers)
@@ -98,10 +100,12 @@ class Endpoint {
     let body = null
 
     if (!update) {
-      url = new URL(this.endpointUrl)
+      //url = new URL(this.endpointUrl)
+      url = this.endpointUrl
       body = 'query=' + encodeURIComponent(query)
     } else {
-      url = new URL(this.updateUrl)
+      //url = new URL(this.updateUrl)
+      url = this.updateUrl
       body = 'update=' + encodeURIComponent(query)
     }
 
